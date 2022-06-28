@@ -1,0 +1,54 @@
+{% extends 'portfolio/base.html' %}
+
+{% block content %}
+
+{% load static %}
+
+<img class="main_background_img" src="{% static 'portfolio/backgroundPPP.jpg' %}">
+
+<h1 style="margin-top: 100px; margin-left: 100px; font-size: 70px">What is it and why is it?</h1>
+
+<p class="description">
+  <img class="pycharm_background_img" src="{% static 'portfolio/background2PPP.png' %}" align="right">
+  My name is Artem, I'm trying to learn how to program in Python,
+  <br>and this is a small project that I made, <br>something like my portfolio in the form of a website.
+  <br><br> Here you can find my projects, resumes and read my blog.
+  <br>Maybe soon I will add something else, but so far this is the main functionality.
+</p>
+
+
+
+<h1 style="margin-top: 100px; margin-left: 100px;">These are my projects</h1>
+<hr>
+
+<div class="row">
+
+{% for project in projects %}
+    <div class="card" style="width: 10rem; margin-left: 10px">
+      <img src="{{ project.img.url }}" class="card-img-top">
+      <div class="card-body">
+        <h5 class="card-title">{{ project.title }}</h5>
+        <p class="card-text">{{ project.description }}</p>
+
+        {% if project.url %}
+          <a href="{{ project.url }}" class="btn btn-primary">link</a>
+        {% endif %}
+      </div>
+    </div>
+
+{% endfor %}
+
+</div>
+<!--{% for project in projects %}
+
+    <p><img src="{{ project.img.url }}"></p>
+    <h2>{{ project.title }}</h2>
+    <p>{{ project.description }}</p>
+
+    {% if project.url %}
+        <a href="{{ project.url }}"> <button type="button" class="btn btn-light">Link</button></a>
+    {% endif %}
+
+{% endfor %}
+-->
+{% endblock %}
